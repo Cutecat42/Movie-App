@@ -1,17 +1,16 @@
 const express = require('express');
 const router = new express.Router();
 const ExpressError = require('../services/expressError');
+const {addThumbsUp, addThumbsDown} = require('../database/movieDB');
 
-router.post('/up', (req,res,next) => {
-    console.log(req.body)
-    res.send('up')
-    // return res.redirect('/');
+router.post('/up', async (req,res,next) => {
+    await addThumbsUp(req.body.imdbID)
+    return res.redirect(`/${req.body.imdbID}`);
 });
 
-router.post('/down', (req,res,next) => {
-    console.log(req.body)
-    res.send('down')
-    // return res.redirect('/');
+router.post('/down', async (req,res,next) => {
+    await addThumbsDown(req.body.imdbID)
+    return res.redirect(`/${req.body.imdbID}`);
 });
 
 

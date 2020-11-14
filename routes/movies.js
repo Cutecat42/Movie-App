@@ -3,7 +3,7 @@ const router = new express.Router();
 const ExpressError = require('../services/expressError');
 const {optionsAll, getMovies} = require('../services/movieDatabase');
 const {optionsSingle, getMovieDetail} = require('../services/movieDatabase');
-const getRating = require('../database/movieDB');
+const {getRating} = require('../database/movieDB');
 
 
 router.get('/', (req,res,next) => {
