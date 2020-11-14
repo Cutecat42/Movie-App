@@ -9,7 +9,7 @@
     <ul>
     <% for (movie of movies["Search"]) {%>
         <li>
-            <%= movie.Title %> (<%= movie.Year %>)
+            <a href="/<%= movie.imdbID %>"> <%= movie.Title %> (<%= movie.Year %>) </a>
         </li>    
      <% } %>
     </ul>

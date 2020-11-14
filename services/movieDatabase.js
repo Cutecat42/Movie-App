@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 const key = require('../credentials/rapidApiKey');
 
-let options = {
+let optionsAll = {
   method: 'GET',
   url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',
   params: {s: 'search', page: '1', r: 'json'},
@@ -11,9 +11,19 @@ let options = {
   }
 };
 
+let optionsSingle = {
+  method: 'GET',
+  url: 'https://movie-database-imdb-alternative.p.rapidapi.com/',
+  params: {i: 'imdbID', r: 'json'},
+  headers: {
+    'x-rapidapi-key': key,
+    'x-rapidapi-host': 'movie-database-imdb-alternative.p.rapidapi.com'
+  }
+};
+
 async function getMovies() {
     try {
-        let res = await axios.request(options)
+        let res = await axios.request(optionsAll)
         return res.data
     }
     catch (err) {
@@ -21,8 +31,20 @@ async function getMovies() {
     }
 };
 
+async function getMovieDetail() {
+    try {
+        let res = await axios.request(optionsSingle)
+        return res.data
+    }
+    catch (err) {
+        console.error("error");
+    }
+};
+
 
 module.exports = {
-    options: options,
-    getMovies: getMovies
+    optionsAll: optionsAll,
+    optionsSingle: optionsSingle,
+    getMovies: getMovies,
+    getMovieDetail: getMovieDetail
 };
