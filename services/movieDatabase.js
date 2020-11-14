@@ -37,7 +37,7 @@ async function getMovieDetail() {
         return res.data
     }
     catch (err) {
-        console.error("error");
+        console.error(error);
     }
 };
 
