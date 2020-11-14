@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/search" method="post">
-        <input type="text" name="search">
-        <button>Search</button>
-    </form>
+    <ul>
+    <% for (movie of movies["Search"]) {%>
+        <li>
+            <%= movie.Title %> (<%= movie.Year %>)
+        </li>    
+     <% } %>
+    </ul>
 </body>
 </html>
