@@ -1,12 +1,12 @@
 const express = require('express');
 const ExpressError = require('./services/expressError');
-const movies = require("./routes/movies")
+const movies = require('./routes/movies');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", movies);
+app.use('/', movies);
 
 app.set('view engine', 'ejs');
 
@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 
 app.use(function (req, res, next) {
-    const notFoundError = new ExpressError("Not Found", 404);
+    const notFoundError = new ExpressError('Not Found', 404);
     return next(notFoundError)
 });
 

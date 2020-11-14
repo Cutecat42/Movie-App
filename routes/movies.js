@@ -40,10 +40,4 @@ router.get('/:imdbID', async (req,res,next) => {
 });
 
 
-
-
-
-
-
-
 module.exports = router;
