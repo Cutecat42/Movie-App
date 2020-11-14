@@ -4,35 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
     
-    
-        
-            <%= movie.Title %>  
+    <section>
+        <p><%= movie.Title %></p>
+              
 
-            <% if (movie.Released != 'N/A') { %>
+            <p><% if (movie.Released != 'N/A') { %>
                 Released: <%= movie.Released %> 
             <% } %>
             <% if (movie.Released == 'N/A') { %>
                 Released: <%= movie.Year %> 
             <% } %>
-            
-            
+        </p>
+        <p>  
             <% if (movie.Runtime != 'N/A') { %>
                 Runtime: <%= movie.Runtime %> 
             <% } %>
+        </p>
 
-
+        <p>
             <% if (movie.Director != 'N/A') { %>
                 Director: <%= movie.Director %> 
             <% } %>
             <% if (movie.Director == 'N/A') { %>
                  Director: Information not available
             <% } %>
+        </p>  
             
-            
-
+        <p>
             <% if (movie.Plot != 'N/A') { %>
                 Plot: <%= movie.Plot %> 
             <% } %>
@@ -41,7 +44,31 @@
                 Thumbs up: <%= rating[0]['thumbs_up'] %> 
                 Thumbs down: <%= rating[0]['thumbs_down'] %> 
             <% } %>
-     
+        </p>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1">
+                    <form action="/ratings/up" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+                            <button><i class="far fa-thumbs-up"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-1"> 
+                    <form action="/ratings/down" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+                            <button><i class="far fa-thumbs-down"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        </section>
     
 </body>
 </html>

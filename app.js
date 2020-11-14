@@ -1,12 +1,15 @@
 const express = require('express');
 const ExpressError = require('./services/expressError');
 const movies = require('./routes/movies');
+const ratings = require('./routes/ratings');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use('/', movies);
+app.use('/ratings', ratings);
 
 app.set('view engine', 'ejs');
 
