@@ -31,7 +31,8 @@ async function addThumbsUp(imdbID) {
         update = Number(update[0]['thumbs_up']) + 1;
         const rating = await db.query(
             `UPDATE movies                                                     
-            SET thumbs_up=$1`, [update]
+            SET thumbs_up=$1
+            WHERE imdbID=$2`, [update,imdbID]
         );
         return rating.rows
     }   
