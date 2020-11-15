@@ -8,8 +8,7 @@ async function getRating(imdbID) {
             FROM movies
             WHERE imdbid=$1`, [imdbID]
         );
-        return rating.rows
-        
+        return rating.rows        
     }
     catch {
         const err = new ExpressError("Error with retrieving from database.", 400);
@@ -25,13 +24,11 @@ async function addThumbsUp(imdbID) {
             `INSERT INTO movies                                                     
             VALUES ($1, 1, 0);`, [imdbID]
         );
-        return rating.rows
-        
+        return rating.rows        
     }
     catch {
         let update = await getRating(imdbID);
-        update = Number(update[0]['thumbs_up']) + 1
-        console.log(update)
+        update = Number(update[0]['thumbs_up']) + 1;
         const rating = await db.query(
             `UPDATE movies                                                     
             SET thumbs_up=$1`, [update]
@@ -46,13 +43,11 @@ async function addThumbsDown(imdbID) {
             `INSERT INTO movies                                                     
             VALUES ($1, 0, 1);`, [imdbID]
         );
-        return rating.rows
-        
+        return rating.rows        
     }
     catch {
         let update = await getRating(imdbID);
-        update = Number(update[0]['thumbs_down']) + 1
-        console.log(update)
+        update = Number(update[0]['thumbs_down']) + 1;
         const rating = await db.query(
             `UPDATE movies                                                     
             SET thumbs_down=$1`, [update]
@@ -60,6 +55,7 @@ async function addThumbsDown(imdbID) {
         return rating.rows
     }   
 };
+
 
 module.exports = {
     getRating : getRating,

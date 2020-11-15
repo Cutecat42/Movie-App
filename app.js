@@ -15,8 +15,6 @@ app.set('view engine', 'ejs');
 
 
 
-
-
 app.use(function (req, res, next) {
     const notFoundError = new ExpressError('Not Found', 404);
     return next(notFoundError)

@@ -16,7 +16,7 @@ router.post('/', async (req,res,next) => {
         const movies = await getMovies();
         if (movies.Response == 'False') {
             const notFoundError = new ExpressError("Nothing Found. Try searching for something else.", 404);
-        return next(notFoundError)
+            return next(notFoundError)
         };
         res.render('movie', { movies : movies })
     }  
@@ -33,7 +33,7 @@ router.get('/:imdbID', async (req,res,next) => {
         const movie = await getMovieDetail();
         if (movie.Response == 'False') {
             const notFoundError = new ExpressError("Movie Not Found. Try searching for something else.", 404);
-        return next(notFoundError)
+            return next(notFoundError)
         };
         res.render('movieDetail', { movie : movie, rating : rating })
     } 

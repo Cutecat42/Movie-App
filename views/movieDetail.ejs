@@ -34,6 +34,9 @@
                  Director: Information not available
             <% } %>
         </p>  
+        <p> 
+            IMDb code: <%= movie.imdbID %> 
+        </p>
             
         <p>
             <% if (movie.Plot != 'N/A') { %>
@@ -43,6 +46,7 @@
             <p>
             <% if (rating[0]) { %>
                 Thumbs up: <%= rating[0]['thumbs_up'] %> 
+                <br>
                 Thumbs down: <%= rating[0]['thumbs_down'] %> 
             <% } %>
         </p>
