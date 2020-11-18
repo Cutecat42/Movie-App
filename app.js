@@ -6,13 +6,13 @@ const ratings = require('./routes/ratings');
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
+app.use(express.static('services'));
 
 app.use('/', movies);
 app.use('/ratings', ratings);
 
 app.set('view engine', 'ejs');
-
 
 
 app.use(function (req, res, next) {
