@@ -8,8 +8,7 @@ const imdbCode = {
 async function getPoster() {
     try {
         let res = await axios.request(`http://www.omdbapi.com/?apikey=${key}&i=${imdbCode.i}`);
-        console.log(res.data.Poster)
-        return res.data
+        return res.data.Poster
     }
     catch (err) {
         console.error(error);
