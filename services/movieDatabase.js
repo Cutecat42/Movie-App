@@ -23,7 +23,7 @@ let optionsSingle = {
 
 async function getMovies() {
     try {
-        let res = await axios.request(optionsAll)
+        let res = await axios.request(optionsAll);
         return res.data
     }
     catch (err) {
@@ -33,7 +33,7 @@ async function getMovies() {
 
 async function getMovieDetail() {
     try {
-        let res = await axios.request(optionsSingle)
+        let res = await axios.request(optionsSingle);
         return res.data
     }
     catch (err) {
