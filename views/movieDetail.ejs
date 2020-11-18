@@ -3,58 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= movie.Title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
     
-    <section>
-        <p><%= movie.Title %></p>
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-5">
+                <% if (poster != 'N/A') { %>
+                    <img src="<%= poster %>" alt="movie poster"> 
+                <% } %>
+                <% if (poster == 'N/A') { %>
+                    <img src="/images/poster.jpg" alt="movie poster" width="70%"> 
+                <% } %>
+            </div>
+            <div class="col-6">
+                <p><%= movie.Title %></p>
               
+                <p>
+                    <% if (movie.Released != 'N/A') { %>
+                    Released: <%= movie.Released %> 
+                    <% } %>
+                    <% if (movie.Released == 'N/A') { %>
+                    Released: <%= movie.Year %> 
+                    <% } %>
+                </p>
+                <p>  
+                    <% if (movie.Runtime != 'N/A') { %>
+                        Runtime: <%= movie.Runtime %> 
+                    <% } %>
+                </p>
+    
+                <p>
+                    <% if (movie.Director != 'N/A') { %>
+                        Director: <%= movie.Director %> 
+                    <% } %>
+                    <% if (movie.Director == 'N/A') { %>
+                        Director: Information not available
+                    <% } %>
+                </p>  
+                <p> 
+                    IMDb code: <%= movie.imdbID %> 
+                </p>
+            </div>
+        </div>
 
-            <p><% if (movie.Released != 'N/A') { %>
-                Released: <%= movie.Released %> 
-            <% } %>
-            <% if (movie.Released == 'N/A') { %>
-                Released: <%= movie.Year %> 
-            <% } %>
-        </p>
-        <p>  
-            <% if (movie.Runtime != 'N/A') { %>
-                Runtime: <%= movie.Runtime %> 
-            <% } %>
-        </p>
-
-        <p>
-            <% if (movie.Director != 'N/A') { %>
-                Director: <%= movie.Director %> 
-            <% } %>
-            <% if (movie.Director == 'N/A') { %>
-                 Director: Information not available
-            <% } %>
-        </p>  
-        <p> 
-            IMDb code: <%= movie.imdbID %> 
-        </p>
-            
-        <p>
-            <% if (movie.Plot != 'N/A') { %>
-                Plot: <%= movie.Plot %> 
-            <% } %>
+        <div class="mt-3">
+            <p>
+                <% if (movie.Plot != 'N/A') { %>
+                    Plot: <%= movie.Plot %> 
+                <% } %>
             </p>
             <p>
-            <% if (rating[0]) { %>
-                Thumbs up: <%= rating[0]['thumbs_up'] %> 
-                <br>
-                Thumbs down: <%= rating[0]['thumbs_down'] %> 
-            <% } %>
-        </p>
-
+                <% if (rating[0]) { %>
+                    Thumbs up: <%= rating[0]['thumbs_up'] %> 
+                    <br>
+                    Thumbs down: <%= rating[0]['thumbs_down'] %> 
+                <% } %>
+            </p>
+        </div> 
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-1">
+                <div class="row col-6">
+                <div class="col-sm-2">
                     <form action="/ratings/up" method="post">
                         <div class="form-group">
                             <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
@@ -62,7 +76,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-1"> 
+                <div class="col-sm-2"> 
                     <form action="/ratings/down" method="post">
                         <div class="form-group">
                             <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
@@ -71,9 +85,16 @@
                     </form>
                 </div>
             </div>
+                <div class="row justify-content-end"> 
+                    <form action="/" method="post">
+                        <input type="hidden" name="search" value="<%= search %>">
+                        <button class="btn btn-outline-info">Go Back</button>   
+                    </form>
+                </div>
+            </div>
         </div>
 
-        </section>
+    </section>
     
 </body>
 </html>

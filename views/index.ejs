@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
-    <section class="container-fluid text-center mt-3">
+    <section class="container-fluid text-center mt-4">
     <img src="/images/movie.jpg" alt="cinema" width="50%">
 
     <form action="/" method="post" class="mt-5">
-        <input type="text" name="search">
-        <button>Search</button>
+        <label for="search">Find information on a movie: </label>
+        <input type="text" name="search" id="search" class="text-center">
+        <small class="form-text text-muted mb-2">
+            If you need help choosing a movie, try "Mulan" or "Atlantis!"
+          </small>
+        <button class="btn btn-outline-info">Search</button>
     </form>
 </section>
 </body>
